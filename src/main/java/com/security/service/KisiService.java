@@ -23,6 +23,7 @@ public class KisiService {
 	public Kisi kisiEkle(Kisi kisi) {
 		return kisiRepository.save(kisi);
 	}
+
 	// id ile kisi getiren servis metotu
 	public Optional<Kisi> idIleKisiGetir(Integer id) {
 		return kisiRepository.findById(id);
@@ -34,6 +35,11 @@ public class KisiService {
 		kisiRepository.deleteById(id);
 		return id + " li kisi silindi";
 	}
+	public String tumKisileriSil(){
+		kisiRepository.deleteAll();
+		return "Tum Kisiler silindi.,ve yine çalıştı :))" ;
+	}
+
 	public Kisi idIleKisiGuncelle(Kisi guncelKisi) {
 		kisiRepository.findById(guncelKisi.getId()).
 				orElseThrow( () -> new IllegalStateException(guncelKisi.getId() + " li kisi bulunamdi"));
